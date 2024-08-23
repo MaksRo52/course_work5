@@ -1,4 +1,5 @@
-from src.utils import *
+from src.utils import (get_employee_data, get_vacancies_data, create_database, save_data_to_database_emp,
+                       save_data_to_database_vac)
 from config import config
 from src.DBManager import DBManager
 
@@ -18,8 +19,6 @@ def main():
           f"4 - Список всех вакансий, у которых зарплата выше средней по всем вакансиям\n"
           f"5 - Список всех вакансий, в названии которых содержатся запрашиваемое слово\n"
           f"0 - Выход из программы")
-
-
 
     while True:
         user_input = input('Введите номер запроса\n')
