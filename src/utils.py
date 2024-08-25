@@ -50,7 +50,7 @@ def create_database(database_name: str, params: dict) -> None:
     with conn.cursor() as cur:
         cur.execute("""
             CREATE TABLE employers (
-                employer_id INTEGER,
+                employer_id INTEGER PRIMARY KEY,
                 employer_name text not null,
                 employer_area TEXT not null,
                 url TEXT,
@@ -61,12 +61,13 @@ def create_database(database_name: str, params: dict) -> None:
     with conn.cursor() as cur:
         cur.execute("""
             CREATE TABLE vacancy (
-                vacancy_id INTEGER,
+                vacancy_id SERIAL PRIMARY KEY,
                 vacancy_name VARCHAR,
                 vacancy_area VARCHAR,
                 salary INTEGER,
                 employer_id INTEGER,
-                vacancy_url VARCHAR
+                vacancy_url VARCHAR,
+                CONSTRAINT fk_employer_id FOREIGN KEY(employer_id) REFERENCES employers(employer_id)
             )
         """)
 
